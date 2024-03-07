@@ -16,5 +16,5 @@ spring:
 app:
   messaging:
     kafka:
-      url:
+      url: localhost:9092
 

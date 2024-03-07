@@ -28,7 +28,7 @@ public class KafkaConfig {
     public ConsumerFactory<String, Employee> userConsumerFactory() {
         Map<String, Object> config = new HashMap<>();
 
-        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaConfigProperties.getUrl());
         config.put(ConsumerConfig.GROUP_ID_CONFIG, "id");
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
@@ -37,7 +37,7 @@ public class KafkaConfig {
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, Employee> userKafkaListenerFactory(CommonErrorHandler commonErrorHandler) {
+    public ConcurrentKafkaListenerContainerFactory<String, Employee> kafkaListenerFactory(CommonErrorHandler commonErrorHandler) {
         ConcurrentKafkaListenerContainerFactory<String, Employee> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(userConsumerFactory());
         factory.setCommonErrorHandler(commonErrorHandler);

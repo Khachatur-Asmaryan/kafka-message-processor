@@ -15,9 +15,9 @@ public class KafkaConsumer {
     private final EmployeeRepository employeeRepository;
 
     @KafkaListener(topics = "kafkamessageprocessor", groupId = "id",
-            containerFactory = "userKafkaListenerFactory")
+            containerFactory = "kafkaListenerFactory")
     public void consumeJson(Employee employee) {
-        log.info("Received new message {}", employee);
+        log.info("Received new message {}", employee.toString());
         Employee savedEmployee = employeeRepository.saveAndFlush(employee);
         log.info("Employee saved successfully with id: {}", savedEmployee.getId());
     }
