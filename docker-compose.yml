@@ -38,5 +38,5 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: root
-      POSTGRES_DB: postgres
+p      POSTGRES_DB: kafka_message_processor
 

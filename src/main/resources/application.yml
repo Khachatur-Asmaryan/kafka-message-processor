@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5433/postgres?currentSchema=kafka_message_processor
+    url: jdbc:postgresql://localhost:5433/kafka_message_processor?currentSchema=kafka_message_processor
     username: postgres
     password: root
   flyway:

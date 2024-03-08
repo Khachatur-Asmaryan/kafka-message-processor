@@ -86,20 +86,26 @@ To connect to the PostgreSQL database running in a Docker container, you can use
 2. Run the following command to connect to the PostgreSQL database container:
 
 ```bash
-docker exec -it pg_container psql -h localhost -U postgres -d postgres -p 5433
+docker exec -it pg_container psql -h localhost -U postgres -d kafka_message_processor -p 5433 -W
 ```
+
+After executing the command, PostgreSQL will prompt you to enter the password for the postgres user. Type root as the password and press Enter.
+
+This will connect you to the kafka_message_processor database.
+
 After executing the command, you'll see a prompt similar to this:
 ```
-postgres=#
+kafka_message_processor=#
 ```
-At this prompt, you can execute SQL queries to interact with the database. You can list all databases in PostgreSQL using the following command:
+At this prompt, you can execute SQL queries to interact with the database.
 
+To select all saved employees from the employee table, you can use the following SQL query:
 ```
-\l
+SELECT * FROM kafka_message_processor.employee;
 ```
 
 After executing your SQL queries, you can exit the psql CLI by typing:
 ```
 \q
 ```
-This will quit the psql session and return you to the command prompt.
+This will quit the 'psql' session and return you to the command prompt.
